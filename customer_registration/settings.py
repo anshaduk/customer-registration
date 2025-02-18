@@ -43,7 +43,7 @@ INSTALLED_APPS = [
 
     #Third party App's
     "rest_framework",
-    "drf_yasg",
+    "drf_spectacular",
 ]
 
 MIDDLEWARE = [
@@ -130,19 +130,16 @@ STATIC_URL = "static/"
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 
-#REST FRAMEWORK SETTINGS
+
 REST_FRAMEWORK = {
-    'DEFAULT_SCHEMA_CLASS': 'rest_framework.schemas.coreapi.AutoSchema'
+    'DEFAULT_SCHEMA_CLASS': 'drf_spectacular.openapi.AutoSchema',
 }
 
-
-#SWAGGER SETTINGS
-SWAGGER_SETTINGS = {
-    'SECURITY_DEFINITIONS': {
-        'api_key': {
-            'type': 'apiKey',
-            'in': 'header',
-            'name': 'Authorization'
-        }
-    },
+SPECTACULAR_SETTINGS = {
+    'TITLE': 'Customer Details API',
+    'DESCRIPTION': 'API for managing customer personal and employment details',
+    'VERSION': '1.0.0',
+    'SERVE_INCLUDE_SCHEMA': False,
+    'COMPONENT_SPLIT_REQUEST': True,
+    
 }
